@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A3534BA2867357000167DA8 /* Kanye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3534B92867357000167DA8 /* Kanye.swift */; };
+		9A3534BC2867365600167DA8 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3534BB2867365600167DA8 /* Networker.swift */; };
 		9A64D4DB2864FBE300E9E733 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64D4DA2864FBE300E9E733 /* AppDelegate.swift */; };
 		9A64D4DD2864FBE300E9E733 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64D4DC2864FBE300E9E733 /* SceneDelegate.swift */; };
 		9A64D4DF2864FBE300E9E733 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64D4DE2864FBE300E9E733 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A3534B92867357000167DA8 /* Kanye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kanye.swift; sourceTree = "<group>"; };
+		9A3534BB2867365600167DA8 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		9A64D4D72864FBE300E9E733 /* URLSessionTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLSessionTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A64D4DA2864FBE300E9E733 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A64D4DC2864FBE300E9E733 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				9A64D4E52864FBE400E9E733 /* LaunchScreen.storyboard */,
 				9A64D4E82864FBE400E9E733 /* Info.plist */,
 				9A64D4EE2865031F00E9E733 /* MyViewController.swift */,
+				9A3534B92867357000167DA8 /* Kanye.swift */,
+				9A3534BB2867365600167DA8 /* Networker.swift */,
 			);
 			path = URLSessionTest;
 			sourceTree = "<group>";
@@ -145,6 +151,8 @@
 				9A64D4DB2864FBE300E9E733 /* AppDelegate.swift in Sources */,
 				9A64D4EF2865031F00E9E733 /* MyViewController.swift in Sources */,
 				9A64D4DD2864FBE300E9E733 /* SceneDelegate.swift in Sources */,
+				9A3534BA2867357000167DA8 /* Kanye.swift in Sources */,
+				9A3534BC2867365600167DA8 /* Networker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

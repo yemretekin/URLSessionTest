@@ -8,8 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    let networker = Networker()
+    
     @IBOutlet weak var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,40 +20,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonClicked(_ sender: Any) {
+        networker.getQuote { Kanye, Error in
+            if let Error = Error {
+                self.label.text = "Error"
+                return
+            }
+            self.label.text = Kanye?.quote
+        }
         
-        let url = URL (string: "https://api.kanye.rest/")!
-        let task = URLSession.shared.dataTask(with: url) { (data: Data? , response: URLResponse?, error: Error?) in
-            
-            if let error = error {
-                print("Error", error)
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse else {
-                print("not the right response")
-                return
-            }
-            guard (200...299).contains(httpResponse.statusCode) else {
-                print("Error, status code", httpResponse.statusCode)
-                return
-            }
-            guard let data = data else {
-                print("bad data")
-                return
-            }
-            
-            do {
-                
-            let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String:String]
-            DispatchQueue.main.async {
-                self.label.text = json["quote"]
-            }
-            }catch let error{
-                    print("Error", error)
-                }
-            
-            }
-        task.resume()
     }
     
 }
