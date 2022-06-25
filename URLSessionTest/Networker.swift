@@ -16,11 +16,21 @@ enum NetworkerError: Error {
 
 class Networker {
     
-    func getQuote (completion: @escaping (Kanye?,Error?) -> (Void)) {
-    let url = URL (string: "https://api.kanye.rest/")!
-        
+    static let shared = Networker()
+    
+    private let session: URLSession
+    
+    init() {
         let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
+        session = URLSession(configuration: config)
+    }
+    
+    func getQuote (completion: @escaping (Kanye?,Error?) -> (Void)) {
+        
+        let url = URL (string: "https://api.kanye.rest/")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
         
         let task = session.dataTask(with: url) { (data: Data? , response: URLResponse?, error: Error?) in
         
@@ -60,6 +70,54 @@ class Networker {
                 print("Error", error)
             }
         
-        }.resume()
+        }
+        task.resume()
 }
+    func getImage(completion: @escaping (Data?,Error?) -> (Void)) {
+        
+        let url = URL (string: "https://picsum.photos/200/300")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = session.downloadTask(with: url){ (localUrl: URL? , response: URLResponse?, error: Error?) in
+        
+        if let error = error {
+            DispatchQueue.main.async {
+                completion(nil,error)
+            }
+            return
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            DispatchQueue.main.async {
+                completion(nil,NetworkerError.badResponse)
+            }
+            return
+        }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            DispatchQueue.main.async {
+                completion(nil,NetworkerError.badStatusCode(httpResponse.statusCode))
+            }
+            return
+        }
+        guard let localUrl = localUrl else {
+            DispatchQueue.main.async {
+                completion(nil,NetworkerError.badData)
+            }
+            return
+        }
+        
+        do {
+            let Data = try Data(contentsOf:localUrl)
+        DispatchQueue.main.async {
+        completion(Data,nil)
+        }
+        }catch let error{
+                print("Error", error)
+            }
+        
+        }
+        task.resume()
+    }
 }

@@ -8,15 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    let networker = Networker()
-    
+
+    var networker = Networker()
+
     @IBOutlet weak var label: UILabel!
-    
+
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
+
     }
 
     @IBAction func buttonClicked(_ sender: Any) {
@@ -26,9 +27,21 @@ class ViewController: UIViewController {
                 return
             }
             self.label.text = Kanye?.quote
-        }
         
+            
+            
+        }
+
+    }
+    @IBAction func imageClicked(_ sender: Any) {
+        networker.getImage { Data, Error in
+            if let Error = Error {
+                print("Error")
+                return
+            }
+            self.imageView.image = UIImage(data: Data!)
+        }
+            
     }
     
 }
-
